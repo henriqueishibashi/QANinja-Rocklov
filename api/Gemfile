@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+# toda gem tem que ir no terminal e executar bundle install, checar se o rspec está instalado e qual versão rspec --version, criar a estrutura basica do rspec, usando rspec --init
+gem "rspec", "3.10"
+# rspec por padrão não sabe consumir uma API, portanto precisando de uma nova gem/biblioteca httparty.
+gem "httparty", "0.18.1"
+# MongoDb para ter acesso ao banco de dados do MongoDb
+gem "mongo", "2.13.2"
+# Para fazer relatório usando Junit formato XML
+gem "rspec_junit_formatter", "0.4.1"

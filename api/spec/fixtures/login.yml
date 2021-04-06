@@ -1,0 +1,36 @@
+# Foi transformado todo o array que existia no post_session em json, e depois usamos um site para converter json em yaml, copy e cole.
+---
+- title: Senha Incorreta
+  payload:
+    email: betao@yahoo.com
+    password: '123456'
+  code: 401
+  error: Unauthorized
+- title: Usuário não existe
+  payload:
+    email: 404@yahoo.com
+    password: pwd123
+  code: 401
+  error: Unauthorized
+- title: Email em Branco
+  payload:
+    email: ''
+    password: pwd123
+  code: 412
+  error: required email
+- title: Sem o Campo Email
+  payload:
+    password: pwd123
+  code: 412
+  error: required email
+- title: Senha em Branco
+  payload:
+    email: betao@yahoo.com
+    password: ''
+  code: 412
+  error: required password
+- title: Sem o campo Senha
+  payload:
+    email: betao@yahoo.com
+  code: 412
+  error: required password
