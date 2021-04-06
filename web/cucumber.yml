@@ -1,0 +1,40 @@
+# A idéia é para mostrar para aonde iria a tela de report no console do cucumber.
+# Ver imagem na pasta principal chamada Report Cucumber Antes e o Report Cucumber Depois, que indica como fica o report após criar esse arquivo yml
+
+# Após isso fica numa nuvem! Que pode ser destruido em 24h.
+# para iniciar um arquivo yml, só colocar ---
+---
+default: --publish-quiet -p allure -p bdd -p local -p chrome
+
+# Para desabilitar o report do cucumber na nuvem, que pode ser perigoso pois alguém pode acessar. Usando o -quiet
+# desabilitando essa feature.
+
+# FORMATOS DE SAIDA NO TERMINAL
+
+# -f progress, serve para não mostrar todos os detalhes de relatório no terminal, só mostra os ... como que passou em um F em vermelhor do erro que deu, sendo uma
+# forma resumida.
+
+# -f pretty, é o formato padrão do Cucumber.
+
+# -f html, é o formato de relatório em html, o -o seria o Output, eu tenho que informar um diretório de saida. Usaremos a pasta LOG. Gerando um arquivo HTML.
+# Não gera nenhum relatório no terminal, ele gera no arquivo html.
+
+# Criando SUB PROFILES:
+# É como se fosse opções que pode adicionar no default, no caso acima estamos usando o pretty, caso queira usar o progress, trocar bdd com dots.
+bdd: -f pretty
+dots: -f progress
+html: -f html -o logs/report.html
+allure: --format AllureCucumber::CucumberFormatter --out=logs
+
+# Para executar o Allure no terminal digita, allure serve logs\
+
+# variável de ambiente na execução do Ruby
+local: CONFIG=local.yml
+hmg: CONFIG=hmg.yml
+
+# CONFIGURANDO MULTI BROWSER.
+# no default é só adicionar -p + o Browser que desejar
+firefox: BROWSER=firefox
+fire_headless: BROWSER=fire_headless
+chrome: BROWSER=chrome
+chrome_headless: BROWSER=chrome_headless

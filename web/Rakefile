@@ -1,0 +1,58 @@
+# executar tarefas através do Rake, Criando Massa de teste de como deverá inicializar, caso tenha uma nova versão do desenvolvedor
+
+# usa a estratégia do Rake quando for recriar a massa de testes, sempre que o banco estiver apagado, rodando rake local_seeds, e com o sh "cucumber" é capaz chamar automaticamente
+# sendo assim quando rodar o rake local_seeds no terminal, ele testa tudo!
+
+# Recurso que vem na linguagem de programação MD5, que verifica o password criptografado.
+require "digest/md5"
+
+require_relative "features/support/libs/mongo.rb"
+
+# transformando password para md5, ver exemplos no array users abaixo.
+def to_md5(pass)
+  return Digest::MD5.hexdigest(pass)
+end
+
+# para rodar o test, no terminal digita rake test
+task :test do
+  puts "Executando uma tarefa de teste"
+end
+
+task :local_seeds do
+  CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/local.yml"))
+
+  # array que vai cadastras os usuários.
+  users = [
+    { name: "Roberto Carlos", email: "betao@yahoo.com", password: to_md5("pwd123") },
+    { name: "Papito Fernando", email: "papito@yahoo.com", password: to_md5("pwd123") },
+    { name: "Anderson Silva", email: "spider@hotmail.com", password: to_md5("pwd123") },
+    { name: "João Anunciante", email: "joao@anunciante.com", password: to_md5("pwd123") },
+    { name: "Maria Locatora", email: "maria@locataria.com", password: to_md5("pwd123") },
+  ]
+
+  # para matar o banco de dados.
+  MongoDB.new.drop_danger
+  # Inserindo os users do array acima.
+  MongoDB.new.insert_users(users)
+
+  # Chama o Cucumber!!! e roda automaticamente, fazendo isso executa todo o teste.
+  #sh "cucumber"
+end
+
+task :hmg_seeds do
+  CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/hmg.yml"))
+
+  # array que vai cadastras os usuários.
+  users = [
+    { name: "Roberto Carlos", email: "betao@yahoo.com", password: to_md5("pwd123") },
+    { name: "Papito Fernando", email: "papito@yahoo.com", password: to_md5("pwd123") },
+    { name: "Anderson Silva", email: "spider@hotmail.com", password: to_md5("pwd123") },
+    { name: "João Anunciante", email: "joao@anunciante.com", password: to_md5("pwd123") },
+    { name: "Maria Locatora", email: "maria@locataria.com", password: to_md5("pwd123") },
+  ]
+
+  # para matar o banco de dados.
+  MongoDB.new.drop_danger
+  # Inserindo os users do array acima.
+  MongoDB.new.insert_users(users)
+end

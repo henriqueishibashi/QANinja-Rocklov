@@ -1,0 +1,6 @@
+# Ilustrando como deveria trabalhar caso não fosse local, ou seja multi ambiente
+# Se tivesse um ambiente de mologação, ou seja, fora do pc local.
+---
+url: http://rocklov.hmg.com
+# Caso tenha usuário e senha
+mongo: mongodb://usuario@senha: 200.234.55.77>27017/rocklov

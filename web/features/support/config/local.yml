@@ -1,0 +1,5 @@
+
+# configurando o teste local.
+---
+url: http://rocklov-web:3000
+mongo: mongodb://rocklov-db:27017/rocklov

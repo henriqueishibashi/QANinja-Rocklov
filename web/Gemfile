@@ -1,0 +1,20 @@
+source "https://rubygems.org"
+
+# Tira o ~> para travar na versão. Toda vez que adicionar uma gem, tem que ir no terminal de digitar bundle install para instalar o fremawork
+# Para fazer um report muito mais detalhado.
+gem "allure-cucumber", "2.13.8.5"
+# Sabe manipular os elementos de aplicação Web.
+gem "capybara", "3.35"
+# Para executar especificações
+gem "cucumber", "5.3"
+# Para executar o webdrive que será aberto, por exemplo Chromer, firefox, IE, etc.
+gem "selenium-webdriver", "3.142.7"
+# Para fazer a validação. Uma vez instalado, consegue validar no Capybara.
+gem "rspec", "3.10"
+# Para fazer um gerador de email.
+gem "faker", "2.17"
+# MongoDb para ter acesso ao banco de dados do MongoDb
+gem "mongo", "2.13.2"
+gem "httparty", "0.18.1"
+
+gem "os"		
